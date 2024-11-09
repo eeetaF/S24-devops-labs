@@ -86,4 +86,5 @@ To securely store sensitive information, the workflow uses GitHub Secrets:
 
 ### Workflow Badge
 The workflow status badge at the top of this `README.md` provides real-time visibility into the CI pipeline status.
+
 ![CI Workflow Status](https://github.com/eeetaF/S24-devops-labs/actions/workflows/ci.yml/badge.svg)
