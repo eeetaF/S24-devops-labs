@@ -26,6 +26,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install flake8  # for linting
+
+      - name: Run Linter
+        working-directory: app_python
+        run: |
+          flake8 . --max-line-length=88 --ignore=E203,W503
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
