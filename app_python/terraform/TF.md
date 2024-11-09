@@ -5,7 +5,7 @@ This document captures the output of Terraform commands and key configurations f
 
 <details>
 <summary>Click to expand Terraform State Show output</summary>
-```
+
 resource "docker_container" "nginx_container" {
     attach                                      = false
     bridge                                      = null
@@ -77,7 +77,7 @@ resource "docker_container" "nginx_container" {
         protocol = "tcp"
     }
 }
-```
+
 </details>
 
 ---
@@ -86,10 +86,10 @@ resource "docker_container" "nginx_container" {
 
 <details>
 <summary>Click to expand Terraform State List output</summary>
-```
+
 docker_container.nginx_container
 docker_image.nginx_image
-```
+
 </details>
 
 ---
@@ -98,7 +98,7 @@ docker_image.nginx_image
 
 <details>
 <summary>Click to expand Terraform Apply Log</summary>
-```
+
 Terraform will perform the following actions:
 
   docker_container.nginx_container must be replaced
@@ -172,7 +172,7 @@ Changes to Outputs:
       + ip   = (known after apply)
       + name = "nginx_container_name_"
     }
-```
+
 </details>
 
 ---
@@ -181,11 +181,11 @@ Changes to Outputs:
 
 <details>
 <summary>Click to expand Terraform Output details</summary>
-```
+
 container_info = {
   "id" = "fc55240b4b8e2431f5a6ebf162dc33f79f4fc18a0efbd55ed8dc6e0d8241a10a"
   "ip" = "172.17.0.2"
   "name" = "nginx_container_name_"
 }
-```
+
 </details>
