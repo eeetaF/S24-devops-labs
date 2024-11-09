@@ -1,5 +1,7 @@
 # Moscow Time Web Application
 
+![CI Workflow Status](https://github.com/eeetaF/S24-devops-labs/actions/workflows/ci.yml/badge.svg)
+
 ## Overview
 
 This is a simple Flask web application that displays the current time in Moscow. It uses Flask to handle routing, `pytz` to manage timezone conversions, and serves a static image from the `/static` folder. The app is lightweight and demonstrates basic Flask functionality.
@@ -64,3 +66,25 @@ This application includes a suite of unit tests to ensure that it functions corr
 ```bash
 python -m unittest discover -s tests
 ```
+
+## CI Workflow
+This project utilizes GitHub Actions for Continuous Integration (CI) to automate the development process. The CI workflow ensures code quality and automates Docker image deployment to Docker Hub.
+
+### CI Workflow Overview
+Look for `ci.yml` in `.github/workflows/ci.yml`
+The CI workflow includes the following essential steps:
+1. Dependencies: Sets up the Python environment and installs project dependencies.
+2. Linter: Runs `flake8` to enforce code style and quality standards.
+3. Tests: Executes unit tests to verify application functionality.
+4. Docker Login: Authenticates with Docker Hub using secure credentials.
+5. Build and Push Docker Image: Builds the Docker image and pushes it to Docker Hub for deployment.
+
+### Secrets Configuration
+To securely store sensitive information, the workflow uses GitHub Secrets:
+- `DOCKER_USERNAME`: Your Docker Hub username.
+- `DOCKER_PASSWORD`: Your Docker Hub password or access token.
+
+### Workflow Badge
+The workflow status badge at the top of this `README.md` provides real-time visibility into the CI pipeline status.
+
+![CI Workflow Status](https://github.com/eeetaF/S24-devops-labs/actions/workflows/ci.yml/badge.svg)

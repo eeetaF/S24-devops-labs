@@ -4,11 +4,13 @@ import pytz
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def show_moscow_time():
     # Get the current time in Moscow
-    moscow_time = datetime.now(pytz.timezone("Europe/Moscow")).strftime("%Y-%m-%d %H:%M:%S")
-    
+    moscow_time_zone = pytz.timezone("Europe/Moscow")
+    moscow_time = datetime.now(moscow_time_zone).strftime("%Y-%m-%d %H:%M:%S")
+
     # Define HTML template
     html_template = """
     <!DOCTYPE html>
@@ -42,16 +44,20 @@ def show_moscow_time():
     </head>
     <body>
         <div class="time-container">
-            <img src="{{ url_for('static', filename='moscow.jpg') }}" alt="Picture of Moscow">
+            <img src="{{ url_for('static', filename='moscow.jpg') }}"
+                alt="Picture of Moscow">
             <h1>Current Time in Moscow:</h1>
             <p>{{ moscow_time }}</p>
         </div>
     </body>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon"
+        type="image/x-icon"
+        href="{{ url_for('static', filename='favicon.ico') }}">
     </html>
     """
 
     return render_template_string(html_template, moscow_time=moscow_time)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
