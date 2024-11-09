@@ -3,11 +3,12 @@ from datetime import datetime
 from app import app
 import pytz
 import re
+
 class FlaskAppTestCase(unittest.TestCase):
     
     @classmethod
     def setUpClass(cls):
-        # Initialize the test client for the Flask app
+        """Initialize the test client for the Flask app."""
         app.config['TESTING'] = True
         cls.client = app.test_client()
     
