@@ -22,7 +22,6 @@ jobs:
       - name: Cache Docker layers
         uses: actions/cache@v2
         with:
-          # Path to the cache directory for Docker layers
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
@@ -37,11 +36,12 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: ./Dockerfile
+          context: app_python
+          file: app_python/Dockerfile
           tags: yourusername/moscow-time-app:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+          push: true
 
       - name: Run Tests
         working-directory: app_python
