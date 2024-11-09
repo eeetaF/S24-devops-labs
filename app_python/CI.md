@@ -9,6 +9,7 @@ Our CI workflow is defined in `.github/workflows/ci.yml` and runs on each push o
 2. **Code Quality Linting**
 3. **Unit Testing**
 4. **Docker Login, Build, and Push**
+5. **Snyk Vulnerability Checks**
 
 Each of these steps is designed to maintain code quality, enforce standards, and streamline deployment processes.
 
