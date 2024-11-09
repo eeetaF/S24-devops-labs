@@ -1,5 +1,7 @@
 # Moscow Time Web Application
 
+![CI Workflow Status](https://github.com/eeetaF/S24-devops-labs/actions/workflows/ci.yml/badge.svg)
+
 ## Overview
 
 This is a simple Flask web application that displays the current time in Moscow. It uses Flask to handle routing, `pytz` to manage timezone conversions, and serves a static image from the `/static` folder. The app is lightweight and demonstrates basic Flask functionality.
