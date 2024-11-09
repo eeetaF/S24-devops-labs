@@ -12,15 +12,16 @@ RUN python -m venv /opt/venv && \
     . /opt/venv/bin/activate && \
     pip install --no-cache-dir -r requirements.txt
 
+# Copy the application code and static files
+# This step is placed after dependency installation to reduce rebuilds
+COPY app.py .
+COPY /static /app/static
+
 # Add a non-root user with limited permissions
 RUN useradd -m appuser
 
 # Change ownership of the app directory to the new user
 RUN chown -R appuser /app
-
-# Copy only the specific necessary files and directories
-COPY app.py .
-COPY /static /app/static
 
 # Switch to the non-root user
 USER appuser
