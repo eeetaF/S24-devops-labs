@@ -189,3 +189,52 @@ container_info = {
 }
 
 </details>
+
+---
+
+## AFTER Applying Terraform to this repository
+Terraform succesfully applied. See `terraform/github` for more info
+<details>
+<summary>Click to expand Terraform Output details</summary>
+
+repository_url = "https://github.com/eeetaF/S24-devops-labs"
+
+</details>
+
+## Best Practices applied
+By following these best practices, we ensure a secure, manageable, and reliable Terraform setup for managing GitHub repository infrastructure.
+
+### 1. Secure Storage of Sensitive Data
+Using Environment Variables for Sensitive Tokens
+
+- **Description**: We used an environment variable (`GITHUB_TOKEN`) to store and access the GitHub personal access token securely.
+- **Reason**: Storing sensitive information such as API tokens in environment variables prevents exposing these credentials directly in configuration files, reducing the risk of accidental leaks.
+- **Implementation**: The `github_token` variable in Terraform references this environment variable, ensuring it remains secure.
+
+### 2. Resource Importation for Existing Infrastructure
+Importing Existing GitHub Repository
+
+- **Description**: Instead of creating a new GitHub repository, we used the `terraform import` command to import an existing repository into Terraform’s state.
+- **Reason**: This approach allows Terraform to manage existing infrastructure without recreating resources, preserving existing data and settings.
+- **Implementation**: We ensured the correct repository name in the `terraform import` command and verified the resource with `terraform state list` to avoid duplication.
+
+### 3. Use of Resource Blocks Following Provider Requirements
+Following Provider-Specific Naming and Attribute Requirements
+
+- **Description**: We adhered to GitHub provider constraints by avoiding special characters (e.g., slashes) in the `name` field of the `github_repository` resource and removed creation-only attributes (e.g., `auto_init`) when managing existing resources.
+- **Reason**: Ensuring compliance with provider-specific rules and limitations helps prevent errors during resource creation or import.
+- **Implementation**: We formatted the repository name and attributes according to Terraform and GitHub provider requirements, allowing Terraform to interact smoothly with GitHub's API.
+
+### 4. Configuration Modularity and Reusability
+
+Separating Configuration into Modular Blocks
+- **Description**: We organized the GitHub repository and branch protection configurations into separate resource blocks.
+- **Reason**: Separating different parts of the configuration (e.g., repository setup and branch protection rules) improves readability, makes it easier to update, and supports modularity.
+- **Implementation**: We defined `github_repository` and `github_branch_protection` as distinct blocks, making each part of the setup clear and manageable.
+
+### 5. Documentation of Outputs
+Providing Resource Outputs
+
+- **Description**: The configuration includes an output block that displays the repository URL after it has been imported or created.
+- **Reason**: Outputs are useful for capturing essential information, making it easy for users and downstream processes to access relevant details without checking individual resource configurations.
+- **Implementation**: We added an output for `repository_url`, which provides easy access to the URL of the managed repository after each `terraform apply`.
