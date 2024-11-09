@@ -20,8 +20,7 @@ class FlaskAppTestCase(unittest.TestCase):
         response = self.client.get('/')
         self.assertIn(b'Current Time in Moscow', response.data, "Home page does not contain the expected title")
         
-        # Check if the response contains the current time
-        # Get current time in Moscow timezone, format it as per the app
+        # Get current time in Moscow timezone, format to only the minute
         moscow_time = datetime.now().strftime("%Y-%m-%d %H:%M")
         self.assertIn(moscow_time.encode(), response.data, "Home page does not contain the expected time")
     
