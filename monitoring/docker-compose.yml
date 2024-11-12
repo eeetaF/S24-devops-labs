@@ -31,9 +31,21 @@ services:
       - grafana-storage:/var/lib/grafana
     depends_on:
       - loki
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus-config.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
 
   moscow-time-app:
     image: fatee/moscow-time-app:latest
+    container_name: moscow-time-app
     ports:
       - "80:80"
     environment:
