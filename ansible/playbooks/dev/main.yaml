@@ -1,0 +1,5 @@
+- name: Setup Docker on target servers
+  hosts: yandex_vm
+  become: true
+  roles:
+    - role: geerlingguy.docker

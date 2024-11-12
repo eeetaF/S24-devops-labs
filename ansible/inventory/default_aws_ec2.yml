@@ -1,0 +1,6 @@
+all:
+  hosts:
+    yandex_vm:
+      ansible_host: 51.250.42.25
+      ansible_user: fateee
+      ansible_ssh_private_key_file: /home/marat/.ssh/yandex_ansible_key
