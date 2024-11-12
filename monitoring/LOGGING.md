@@ -27,12 +27,12 @@ Configures Promtail to specify where logs are sourced from and which labels to a
 
 ### 1. Grafana Dashboard
 
-![Grafana Dashboard](./monitoring/grafana.png)
+![Grafana Dashboard](./screenshots/grafana.png)
 
 ### 2. Promtail Logs
 
-![Promtail Logs](./monitoring/promtail.png)
+![Promtail Logs](./screenshots/promtail.png)
 
 ### 3. LLoki Logs
 
-![Loki Logs](./monitoring/loki.png)
+![Loki Logs](./screenshots/loki.png)
