@@ -33,6 +33,6 @@ Configures Promtail to specify where logs are sourced from and which labels to a
 
 ![Promtail Logs](./screenshots/promtail.png)
 
-### 3. LLoki Logs
+### 3. Loki Logs
 
 ![Loki Logs](./screenshots/loki.png)
