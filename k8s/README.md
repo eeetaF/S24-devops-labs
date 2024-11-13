@@ -22,6 +22,8 @@ kubernetes                ClusterIP   10.96.0.1        <none>        443/TCP    
 moscow-time-app-service   NodePort    10.107.152.216   <none>        5000:30001/TCP   5m6s
 ```
 
-## Visit `http:<minikube ip>:30001`:
+## Visit 
+
+http:<minikube ip>:30001`:
 
 ![Minikube](./minikube.png)
