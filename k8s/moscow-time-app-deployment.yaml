@@ -17,3 +17,9 @@ spec:
         image: fatee/moscow-time-app:latest
         ports:
         - containerPort: 5000
+        env:
+        - name: MY_CATS_NAME
+          valueFrom:
+            secretKeyRef:
+              name: secret-with-paws
+              key: mycatsname
