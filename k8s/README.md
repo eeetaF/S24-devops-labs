@@ -24,6 +24,6 @@ moscow-time-app-service   NodePort    10.107.152.216   <none>        5000:30001/
 
 ## Visit 
 
-http:<minikube ip>:30001`:
+`http:<minikube ip>:30001`:
 
 ![Minikube](./minikube.png)
