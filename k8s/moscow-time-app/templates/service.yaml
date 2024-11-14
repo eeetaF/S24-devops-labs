@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "moscow-time-app.fullname" . }}
+  name: {{ include "moscow-time-app.fullname" . }}-headless
   labels:
     {{- include "moscow-time-app.labels" . | nindent 4 }}
 spec:
+  clusterIP: None  # Makes it a headless service
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
