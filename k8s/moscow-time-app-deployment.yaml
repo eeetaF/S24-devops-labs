@@ -23,3 +23,12 @@ spec:
             secretKeyRef:
               name: secret-with-paws
               key: mycatsname
+        volumeMounts:
+        - name: visits-volume
+          mountPath: /app/visits.txt
+          subPath: visits.txt  # Mounting only the file
+      volumes:
+      - name: visits-volume
+        hostPath:
+          path: /home/marat/Documents/GitHub/S24-devops-labs/app_python/visits.txt
+          type: File

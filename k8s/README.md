@@ -22,8 +22,30 @@ kubernetes                ClusterIP   10.96.0.1        <none>        443/TCP    
 moscow-time-app-service   NodePort    10.107.152.216   <none>        5000:30001/TCP   5m6s
 ```
 
+## Start
+
+### Start minikube
+
+```
+minikube start
+```
+
+### Apply configs
+
+```
+kubectl apply -f k8s/moscow-time-app-deployment.yaml
+kubectl apply -f k8s/moscow-time-app-service.yaml
+```
+
+### Access via Minikube
+
+```
+minikube service moscow-time-app --url
+```
+
 ## Visit 
 
 `http:<minikube ip>:30001`:
 
 ![Minikube](./minikube.png)
+
