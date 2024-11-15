@@ -38,5 +38,5 @@ Configures Promtail to specify where logs are sourced from and which labels to a
 ![Loki Logs](./screenshots/loki.png)
 
 ### 4. Prometheus Logs
-image
+
 ![Prometheus Logs](./screenshots/prometheus.png)

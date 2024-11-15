@@ -65,6 +65,7 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: data
+
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
