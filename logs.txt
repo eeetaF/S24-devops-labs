@@ -1,0 +1,53 @@
+
+==> Audit <==
+|---------|--------------------------------|----------|-------|---------|---------------------|---------------------|
+| Command |              Args              | Profile  | User  | Version |     Start Time      |      End Time       |
+|---------|--------------------------------|----------|-------|---------|---------------------|---------------------|
+| start   |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:09 MSK |                     |
+| start   | --driver=docker                | minikube | marat | v1.34.0 | 13 Nov 24 13:11 MSK |                     |
+| start   | --driver=docker                | minikube | marat | v1.34.0 | 13 Nov 24 13:11 MSK | 13 Nov 24 13:15 MSK |
+| service | moscow-time-app-service --url  | minikube | marat | v1.34.0 | 13 Nov 24 13:27 MSK | 13 Nov 24 13:27 MSK |
+| ip      |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:28 MSK | 13 Nov 24 13:28 MSK |
+| service | list                           | minikube | marat | v1.34.0 | 13 Nov 24 13:29 MSK | 13 Nov 24 13:29 MSK |
+| service | moscow-time-app-service        | minikube | marat | v1.34.0 | 13 Nov 24 13:32 MSK | 13 Nov 24 13:32 MSK |
+| stop    |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:33 MSK | 13 Nov 24 13:33 MSK |
+| delete  |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:33 MSK | 13 Nov 24 13:33 MSK |
+| start   | --driver=docker                | minikube | marat | v1.34.0 | 13 Nov 24 13:33 MSK | 13 Nov 24 13:34 MSK |
+| service | moscow-time-app-service --url  | minikube | marat | v1.34.0 | 13 Nov 24 13:35 MSK | 13 Nov 24 13:35 MSK |
+| ip      |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:39 MSK | 13 Nov 24 13:39 MSK |
+| ssh     | -- curl http://localhost:30001 | minikube | marat | v1.34.0 | 13 Nov 24 13:39 MSK |                     |
+| stop    |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:52 MSK |                     |
+| start   | --driver=docker                | minikube | marat | v1.34.0 | 13 Nov 24 13:53 MSK |                     |
+| stop    |                                | minikube | marat | v1.34.0 | 13 Nov 24 13:53 MSK |                     |
+|---------|--------------------------------|----------|-------|---------|---------------------|---------------------|
+
+
+==> Last Start <==
+Log file created at: 2024/11/13 13:53:08
+Running on machine: marat-Yoga-Slim-7-14ARE05
+Binary: Built with gc go1.22.5 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1113 13:53:08.618550   39053 out.go:345] Setting OutFile to fd 1 ...
+I1113 13:53:08.618818   39053 out.go:397] isatty.IsTerminal(1) = true
+I1113 13:53:08.618822   39053 out.go:358] Setting ErrFile to fd 2...
+I1113 13:53:08.618828   39053 out.go:397] isatty.IsTerminal(2) = true
+I1113 13:53:08.619024   39053 root.go:338] Updating PATH: /home/marat/.minikube/bin
+I1113 13:53:08.619444   39053 out.go:352] Setting JSON to false
+I1113 13:53:08.622285   39053 start.go:129] hostinfo: {"hostname":"marat-Yoga-Slim-7-14ARE05","uptime":3675,"bootTime":1731491513,"procs":526,"os":"linux","platform":"ubuntu","platformFamily":"debian","platformVersion":"22.04","kernelVersion":"6.5.0-26-generic","kernelArch":"x86_64","virtualizationSystem":"kvm","virtualizationRole":"host","hostId":"8b20aba3-4b2d-41a4-8398-2551911cd58e"}
+I1113 13:53:08.622347   39053 start.go:139] virtualization: kvm host
+I1113 13:53:08.623537   39053 out.go:177] 😄  minikube v1.34.0 on Ubuntu 22.04
+I1113 13:53:08.625119   39053 notify.go:220] Checking for updates...
+I1113 13:53:08.625351   39053 config.go:182] Loaded profile config "minikube": Driver=docker, ContainerRuntime=docker, KubernetesVersion=v1.31.0
+I1113 13:53:08.625707   39053 driver.go:394] Setting default libvirt URI to qemu:///system
+W1113 13:53:08.640494   39053 docker.go:181] docker version returned error: exit status 1
+I1113 13:53:08.641667   39053 out.go:177] ✨  Using the docker driver based on existing profile
+I1113 13:53:08.643066   39053 start.go:297] selected driver: docker
+I1113 13:53:08.643071   39053 start.go:901] validating driver "docker" against &{Name:minikube KeepContext:false EmbedCerts:false MinikubeISO: KicBaseImage:gcr.io/k8s-minikube/kicbase:v0.0.45@sha256:81df288595202a317b1a4dc2506ca2e4ed5f22373c19a441b88cfbf4b9867c85 Memory:3800 CPUs:2 DiskSize:20000 Driver:docker HyperkitVpnKitSock: HyperkitVSockPorts:[] DockerEnv:[] ContainerVolumeMounts:[] InsecureRegistry:[] RegistryMirror:[] HostOnlyCIDR:192.168.59.1/24 HypervVirtualSwitch: HypervUseExternalSwitch:false HypervExternalAdapter: KVMNetwork:default KVMQemuURI:qemu:///system KVMGPU:false KVMHidden:false KVMNUMACount:1 APIServerPort:8443 DockerOpt:[] DisableDriverMounts:false NFSShare:[] NFSSharesRoot:/nfsshares UUID: NoVTXCheck:false DNSProxy:false HostDNSResolver:true HostOnlyNicType:virtio NatNicType:virtio SSHIPAddress: SSHUser:root SSHKey: SSHPort:22 KubernetesConfig:{KubernetesVersion:v1.31.0 ClusterName:minikube Namespace:default APIServerHAVIP: APIServerName:minikubeCA APIServerNames:[] APIServerIPs:[] DNSDomain:cluster.local ContainerRuntime:docker CRISocket: NetworkPlugin:cni FeatureGates: ServiceCIDR:10.96.0.0/12 ImageRepository: LoadBalancerStartIP: LoadBalancerEndIP: CustomIngressCert: RegistryAliases: ExtraOptions:[] ShouldLoadCachedImages:true EnableDefaultCNI:false CNI:} Nodes:[{Name: IP:192.168.49.2 Port:8443 KubernetesVersion:v1.31.0 ContainerRuntime:docker ControlPlane:true Worker:true}] Addons:map[default-storageclass:true storage-provisioner:true] CustomAddonImages:map[] CustomAddonRegistries:map[] VerifyComponents:map[apiserver:true system_pods:true] StartHostTimeout:6m0s ScheduledStop:<nil> ExposedPorts:[] ListenAddress: Network: Subnet: MultiNodeRequested:false ExtraDisks:0 CertExpiration:26280h0m0s Mount:false MountString:/home/marat:/minikube-host Mount9PVersion:9p2000.L MountGID:docker MountIP: MountMSize:262144 MountOptions:[] MountPort:0 MountType:9p MountUID:docker BinaryMirror: DisableOptimizations:false DisableMetrics:false CustomQemuFirmwarePath: SocketVMnetClientPath: SocketVMnetPath: StaticIP: SSHAuthSock: SSHAgentPID:0 GPUs: AutoPauseInterval:1m0s}
+I1113 13:53:08.643145   39053 start.go:912] status for docker: {Installed:true Healthy:false Running:true NeedsImprovement:false Error:"docker version --format {{.Server.Os}}-{{.Server.Version}}:{{.Server.Platform.Name}}" exit status 1: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied Reason:PROVIDER_DOCKER_NEWGRP Fix:Add your user to the 'docker' group: 'sudo usermod -aG docker $USER && newgrp docker' Doc:https://docs.docker.com/engine/install/linux-postinstall/ Version:}
+I1113 13:53:08.644143   39053 out.go:201] 
+W1113 13:53:08.644952   39053 out.go:270] 💣  Exiting due to PROVIDER_DOCKER_NEWGRP: "docker version --format <no value>-<no value>:<no value>" exit status 1: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+W1113 13:53:08.644976   39053 out.go:270] 💡  Suggestion: Add your user to the 'docker' group: 'sudo usermod -aG docker $USER && newgrp docker'
+W1113 13:53:08.644993   39053 out.go:270] 📘  Documentation: https://docs.docker.com/engine/install/linux-postinstall/
+I1113 13:53:08.645810   39053 out.go:201] 
+
+

@@ -1,0 +1,117 @@
+# Default values for moscow-time-app Helm chart.
+
+# Replica count for StatefulSet
+replicaCount: 1
+
+# Image configuration
+image:
+  repository: fatee/moscow-time-app       # Docker Hub repository
+  tag: latest                             # Image tag (defaults to 'latest')
+  pullPolicy: IfNotPresent                # Image pull policy
+
+# Image pull secrets (for private registries)
+imagePullSecrets: []
+
+# Helm-specific name overrides
+nameOverride: ""
+fullnameOverride: ""
+
+# Service account settings
+serviceAccount:
+  create: true                           # Whether to create a new service account
+  automount: true                        # Automatically mount service account tokens
+  annotations: {}                        # Additional annotations for the service account
+  name: ""                               # Name of the service account (optional)
+
+# Pod metadata
+podAnnotations: {}                       # Custom annotations for the pod
+podLabels: {}                            # Custom labels for the pod
+
+# Security settings
+podSecurityContext: {}                   # Security context for the pod
+securityContext: {}                      # Security context for the container
+
+# Service settings
+service:
+  type: ClusterIP                        # Service type (e.g., ClusterIP, NodePort)
+  port: 80                               # External port for the service
+
+# Ingress settings (if needed)
+ingress:
+  enabled: false                         # Enable or disable Ingress
+  className: ""                          # Ingress class name
+  annotations: {}                        # Additional annotations for the Ingress
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+# Resource requests and limits for the container
+resources:
+  requests:
+    cpu: "100m"                          # Minimum CPU required
+    memory: "128Mi"                      # Minimum memory required
+  limits:
+    cpu: "200m"                          # Maximum CPU allowed
+    memory: "256Mi"                      # Maximum memory allowed
+
+# Health check (liveness and readiness probes)
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 10
+  periodSeconds: 5
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+# Autoscaling settings (optional)
+autoscaling:
+  enabled: false                         # Enable or disable autoscaling (ignored for StatefulSet)
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+# Persistent storage configuration for StatefulSet
+storage:
+  size: 1Gi                              # Persistent storage size for each replica's volume
+
+# Additional volumes and mounts for the pod
+volumes: []
+volumeMounts: []
+
+# Node affinity and toleration settings
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# Secret values
+secrets:
+  mycatsname: "uksus"                    # Example secret value
+
+alertmanager:
+  alertmanagerConfig:
+    route:
+      receiver: 'default-receiver'
+      group_by: ['alertname', 'namespace']
+      routes:
+        - match:
+            namespace: "default"
+          receiver: 'default-receiver'
+        - match:
+            namespace: "kube-system"
+          receiver: 'kube-system-receiver'
+
+    receivers:
+      - name: 'default-receiver'
+        email_configs:
+          - to: 'abc@example.com'
+      - name: 'kube-system-receiver'
+        email_configs:
+          - to: 'abcd@example.com'

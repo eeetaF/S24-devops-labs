@@ -1,0 +1,23 @@
+- name: Ensure Docker is installed
+  package:
+    name: docker.io
+    state: present
+
+- name: Pull the Docker image
+  docker_image:
+    name: "{{ docker_image }}"
+    tag: "{{ docker_tag }}"
+    source: pull
+
+- name: Create and start the web application container
+  docker_container:
+    name: "{{ docker_container_name }}"
+    image: "{{ docker_image }}:{{ docker_tag }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "80:5000"
+    env:
+      FLASK_APP: "app.py"
+      FLASK_RUN_HOST: "0.0.0.0"
+    command: "flask run --host=0.0.0.0 --port=5000" 

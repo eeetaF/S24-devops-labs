@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moscow-time-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moscow-time-app
+  template:
+    metadata:
+      labels:
+        app: moscow-time-app
+    spec:
+      containers:
+      - name: moscow-time-app
+        image: fatee/moscow-time-app:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MY_CATS_NAME
+          valueFrom:
+            secretKeyRef:
+              name: secret-with-paws
+              key: mycatsname
+        volumeMounts:
+        - name: visits-volume
+          mountPath: /app/visits.txt
+          subPath: visits.txt  # Mounting only the file
+      volumes:
+      - name: visits-volume
+        hostPath:
+          path: /home/marat/Documents/GitHub/S24-devops-labs/app_python/visits.txt
+          type: File

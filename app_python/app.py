@@ -1,15 +1,31 @@
 from flask import Flask, render_template_string
 from datetime import datetime
 import pytz
+import os
 
 app = Flask(__name__)
+VISITS_FILE = "visits.txt"
 
+def get_visit_count():
+    try:
+        with open(VISITS_FILE, "r") as file:
+            return int(file.read())
+    except (FileNotFoundError, ValueError):
+        return 0
+
+def increment_visit_count():
+    count = get_visit_count() + 1
+    with open(VISITS_FILE, "w") as file:
+        file.write(str(count))
+    return count
 
 @app.route('/')
 def show_moscow_time():
     # Get the current time in Moscow
     moscow_time_zone = pytz.timezone("Europe/Moscow")
     moscow_time = datetime.now(moscow_time_zone).strftime("%Y-%m-%d %H:%M:%S")
+    
+    visit_count = increment_visit_count()
 
     # Define HTML template
     html_template = """
@@ -48,6 +64,7 @@ def show_moscow_time():
                 alt="Picture of Moscow">
             <h1>Current Time in Moscow:</h1>
             <p>{{ moscow_time }}</p>
+            <p>This page has been visited {{ visit_count }} times.</p>
         </div>
     </body>
     <link rel="icon"
@@ -56,8 +73,12 @@ def show_moscow_time():
     </html>
     """
 
-    return render_template_string(html_template, moscow_time=moscow_time)
+    return render_template_string(html_template, moscow_time=moscow_time, visit_count=visit_count)
 
+@app.route('/visits')
+def visits():
+    count = get_visit_count()
+    return f"Total visits: {count}"
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -4,7 +4,7 @@
 
 ## Overview
 
-This is a simple Flask web application that displays the current time in Moscow. It uses Flask to handle routing, `pytz` to manage timezone conversions, and serves a static image from the `/static` folder. The app is lightweight and demonstrates basic Flask functionality.
+This is a simple Flask web application that displays the current time in Moscow. It uses Flask to handle routing, `pytz` to manage timezone conversions, and serves a static image from the `/static` folder. The app is lightweight and demonstrates basic Flask functionality. Also implements Visit counter.
 
 ## Run the project locally
 ### 1. Clone the repository
@@ -88,3 +88,9 @@ To securely store sensitive information, the workflow uses GitHub Secrets:
 The workflow status badge at the top of this `README.md` provides real-time visibility into the CI pipeline status.
 
 ![CI Workflow Status](https://github.com/eeetaF/S24-devops-labs/actions/workflows/ci.yml/badge.svg)
+
+## Minikube integration
+See `k8s/README.md` for more info
+
+## Visits counter
+The application uses `visits.txt` to track the visit count. This file is mounted as a volume in Docker and Kubernetes.

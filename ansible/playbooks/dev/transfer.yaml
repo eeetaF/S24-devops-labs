@@ -1,0 +1,7 @@
+- name: Transfer playbook to the remote machine
+  hosts: yandex_vm
+  tasks:
+    - name: Copy the playbook to the remote machine
+      ansible.builtin.copy:
+        src: /path/to/your_playbook.yaml
+        dest: /tmp/your_playbook.yaml

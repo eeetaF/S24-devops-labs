@@ -1,0 +1,13 @@
+- name: Configure Remote VM using Virtual Environment
+  hosts: yandex_vm
+
+  tasks:
+    - name: Ensure essential packages are installed
+      raw: sudo apt update && sudo apt install -y python3 python3-venv
+
+    - name: Create a virtual environment for Ansible in the remote machine
+      raw: python3 -m venv ~/.ansible_venv
+
+    - name: Install six and ansible within the virtual environment
+      raw: |
+        ~/.ansible_venv/bin/pip install six ansible

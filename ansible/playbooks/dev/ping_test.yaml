@@ -1,0 +1,5 @@
+- name: Test Ansible Connection
+  hosts: yandex_vm
+  tasks:
+    - name: Ping the host
+      ansible.builtin.ping:

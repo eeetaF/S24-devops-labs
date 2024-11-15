@@ -16,6 +16,7 @@ RUN python -m venv /opt/venv && \
 # This step is placed after dependency installation to reduce rebuilds
 COPY app.py .
 COPY /static /app/static
+COPY visits.txt .
 
 # Add a non-root user with limited permissions
 RUN useradd -m appuser
