@@ -94,3 +94,24 @@ affinity: {}
 # Secret values
 secrets:
   mycatsname: "uksus"                    # Example secret value
+
+alertmanager:
+  alertmanagerConfig:
+    route:
+      receiver: 'default-receiver'
+      group_by: ['alertname', 'namespace']
+      routes:
+        - match:
+            namespace: "default"
+          receiver: 'default-receiver'
+        - match:
+            namespace: "kube-system"
+          receiver: 'kube-system-receiver'
+
+    receivers:
+      - name: 'default-receiver'
+        email_configs:
+          - to: 'abc@example.com'
+      - name: 'kube-system-receiver'
+        email_configs:
+          - to: 'abcd@example.com'

@@ -59,3 +59,9 @@ data:
           - targets: ['192.168.49.2:2381']
         metrics_path: /metrics
         scheme: http
+
+      - job_name: 'kube-state-metrics'
+        static_configs:
+          - targets: ['10.104.219.29:8080']
+        metrics_path: /metrics
+        scheme: http
